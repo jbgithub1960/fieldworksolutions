@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fieldwork Solutions LLC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a1f6e;
+      --navy-light: #2a2f8e;
+      --off-white: #f7f7f9;
+      --mid-gray: #6b7280;
+      --accent: #c8a96e;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--off-white);
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 4rem;
+      background: rgba(247,247,249,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(26,31,110,0.08);
+    }
+
+    nav img {
+      height: 44px;
+      width: auto;
+    }
+
+    nav a {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover { opacity: 1; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(26,31,110,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      color: var(--navy);
+      animation: fadeUp 0.9s 0.15s ease both;
+    }
+
+    .hero h1 span {
+      display: block;
+      font-weight: 600;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--accent);
+      margin: 2rem auto;
+      animation: fadeUp 0.9s 0.25s ease both;
+    }
+
+    .hero p {
+      max-width: 560px;
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--mid-gray);
+      letter-spacing: 0.02em;
+      animation: fadeUp 0.9s 0.35s ease both;
+    }
+
+    /* SECTION */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .section p {
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: var(--mid-gray);
+      max-width: 640px;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid rgba(26,31,110,0.08);
+      padding: 2.2rem;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 40px rgba(26,31,110,0.09);
+      transform: translateY(-3px);
+    }
+
+    .card-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: rgba(26,31,110,0.12);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .card p {
+      font-size: 0.86rem;
+      line-height: 1.75;
+      color: var(--mid-gray);
+    }
+
+    /* CONTACT */
+    .contact {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .contact .section-label { color: var(--accent); }
+
+    .contact h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .contact a {
+      display: inline-block;
+      padding: 0.85rem 2.4rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact a:hover {
+      background: var(--accent);
+      color: var(--navy);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--mid-gray);
+      border-top: 1px solid rgba(26,31,110,0.08);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .section { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <img src="logo.png" alt="Fieldwork Solutions">
+    <a href="mailto:jbruco1212@gmail.com">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <img src="logo.png" alt="Fieldwork Solutions" style="width:72px;height:72px;object-fit:contain;margin-bottom:1rem;animation:fadeUp 0.9s ease both;">
+    <h1>Fieldwork Solutions <span>LLC</span></h1>
+    <div class="divider"></div>
+    <p>Voice AI research and healthcare outreach solutions for older adult populations. Indianapolis, Indiana.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">What We Do</div>
+    <h2>Reaching the populations research has always struggled to reach</h2>
+    <p>Fieldwork Solutions LLC develops voice-based outbound telephone platforms that deliver structured research surveys and healthcare assessments to adults aged 55 and older. Our platform requires no smartphone, no app, and no digital literacy -- just a phone call.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>Aging Research</h3>
+        <p>Purpose-built survey delivery for federally funded longitudinal aging studies. Structured instruments delivered conversationally via standard telephone.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>Healthcare Outreach</h3>
+        <p>Medicare Annual Wellness Visit outreach for primary care practices and healthcare organizations. Compliant, efficient, and accessible.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>Disability Research</h3>
+        <p>Barrier-free research participation for adults with disabilities. Outbound telephone delivery removes mobility, transportation, and access constraints entirely.</p>
+      </div>
+      <div class="card" style="display:flex;align-items:center;justify-content:center;min-height:180px;">
+        <img src="logo.png" alt="Fieldwork Solutions" style="width:80%;height:80%;object-fit:contain;opacity:0.85;">
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="section-label">Get In Touch</div>
+    <h2>Let's talk about your research needs</h2>
+    <p>Indianapolis, Indiana &nbsp;&middot;&nbsp; Fieldwork Solutions LLC</p>
+    <a href="mailto:jbruco1212@gmail.com">jbruco1212@gmail.com</a>
+    <br><br>
+    <p style="font-size:0.78rem;opacity:0.5;">Joseph Brusca, Principal</p>
+  </section>
+
+  <footer>
+    &copy; 2026 Fieldwork Solutions LLC &nbsp;&middot;&nbsp; Indianapolis, Indiana
+  </footer>
+
+</body>
+</html>
